@@ -27,11 +27,11 @@ class CustomForm extends Form{
 	 * CustomForm constructor.
 	 * @param string $title
 	 * @param array $elements
-	 * @param Closure $onSubmit after all elements are called
 	 * @param null|Closure $onClose
+	 * @param null|Closure $onSubmit after all elements are called
 	 */
 	#[Pure]
-	public function __construct(string $title, array $elements, Closure $onSubmit, ?Closure $onClose = null){
+	public function __construct(string $title, array $elements, ?Closure $onClose = null, ?Closure $onSubmit = null){
 		parent::__construct($title);
 		$this->elements = $elements;
 		$this->onSubmit = $onSubmit;
