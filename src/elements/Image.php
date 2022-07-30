@@ -18,6 +18,7 @@
 declare(strict_types=1);
 namespace xxAROX\forms\elements;
 use JetBrains\PhpStorm\ArrayShape;
+use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\Immutable;
 use JetBrains\PhpStorm\Pure;
 use JsonSerializable;
@@ -62,7 +63,11 @@ class Image implements JsonSerializable{
 	 * Image constructor.
 	 * @param string $data
 	 * @param string $type
+	 * @deprecated
+	 * @see Image::url($data)
+	 * @see Image::path($data)
 	 */
+	#[Deprecated]
 	public function __construct(string $data, string $type = self::TYPE_URL){
 		$this->type = $type;
 		$this->data = $data;
