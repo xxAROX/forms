@@ -15,10 +15,11 @@
  *    limitations under the License.
  *
  */
-
 declare(strict_types=1);
 namespace xxAROX\forms\elements;
 use JetBrains\PhpStorm\ArrayShape;
+use JetBrains\PhpStorm\Immutable;
+use JetBrains\PhpStorm\Pure;
 use JsonSerializable;
 
 
@@ -30,11 +31,32 @@ use JsonSerializable;
  * @ide PhpStorm
  * @project forms
  */
+#[Immutable]
 class Image implements JsonSerializable{
 	public const TYPE_URL  = "url";
 	public const TYPE_PATH = "path";
 	private string $type;
 	private string $data;
+
+	/**
+	 * Function url
+	 * @param string $data
+	 * @return static
+	 */
+	#[Pure]
+	public static function url(string $data): self{
+		return new self($data, self::TYPE_URL);
+	}
+
+	/**
+	 * Function path
+	 * @param string $data
+	 * @return static
+	 */
+	#[Pure]
+	public static function path(string $data): self{
+		return new self($data, self::TYPE_PATH);
+	}
 
 	/**
 	 * Image constructor.
@@ -66,7 +88,8 @@ class Image implements JsonSerializable{
 	 * Function jsonSerialize
 	 * @return array
 	 */
-	#[ArrayShape(["type" => "string", "data" => "string"])] public function jsonSerialize(): array{
+	#[ArrayShape([ "type" => "string", "data" => "string" ])]
+	public function jsonSerialize(): array{
 		return [
 			"type" => $this->type,
 			"data" => $this->data,
