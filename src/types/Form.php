@@ -1,10 +1,4 @@
 <?php
-/*
- * Copyright (c) Jan Sohn / xxAROX
- * All rights reserved.
- * I don't want anyone to use my source code without permission.
- */
-
 declare(strict_types=1);
 namespace xxAROX\forms\types;
 use Closure;
