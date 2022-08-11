@@ -37,7 +37,7 @@ use xxAROX\forms\elements\Element;
 class CustomForm extends Form{
 	/** @var Element[] */
 	protected array $elements;
-	private Closure $onSubmit;
+	private ?Closure $onSubmit;
 	private ?Closure $onClose;
 
 	/**
@@ -94,7 +94,7 @@ class CustomForm extends Form{
 				/** @var Player $player */
 				if (method_exists($element, "onSubmit")) $element->onSubmit($player, $element);
 			}
-			($this->onSubmit)($player, new CustomFormResponse($this->elements));
+			if ($this->onSubmit !== null) ($this->onSubmit)($player, new CustomFormResponse($this->elements));
 		} else throw new FormValidationException("Expected array or null, got " . gettype($data));
 	}
 
