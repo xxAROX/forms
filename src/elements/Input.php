@@ -38,7 +38,6 @@ use pocketmine\utils\Utils;
  */
 class Input extends Element{
 	protected string $placeholder;
-	protected string $default;
 	protected ?Closure $on_submit;
 
 	/**
