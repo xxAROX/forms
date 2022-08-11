@@ -52,7 +52,7 @@ class Dropdown extends Element{
 	public function __construct(string $text, array $options, int $default = 0, ?Closure $on_submit = null, bool $locked = false){
 		parent::__construct($text, $locked, $default);
 		$this->options = $options;
-		Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class), new ParameterType("element", Element::class)), $on_submit);
+		Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class), new ParameterType("element", static::class)), $on_submit);
 		$this->on_submit = $on_submit;
 	}
 

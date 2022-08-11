@@ -67,7 +67,7 @@ class Slider extends Element{
 		}
 		if ($step <= 0) throw new InvalidArgumentException("Step must be greater than zero");
 		$this->step = $step;
-		Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class), new ParameterType("element", Element::class)), $on_submit);
+		Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class), new ParameterType("element", self::class)), $on_submit);
 		$this->on_submit = $on_submit;
 	}
 

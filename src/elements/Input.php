@@ -54,7 +54,7 @@ class Input extends Element{
 		Utils::validateCallableSignature(new CallbackType(
 			new ReturnType(),
 			new ParameterType("player", Player::class),
-			new ParameterType("element", Element::class)
+			new ParameterType("element", self::class)
 		), $on_submit);
 		$this->on_submit = $on_submit;
 	}
