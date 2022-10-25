@@ -39,7 +39,6 @@ use pocketmine\utils\Utils;
 class Dropdown extends Element{
 	/** @var string[] */
 	protected array $options;
-	protected ?Closure $on_submit;
 
 	/**
 	 * Dropdown constructor.
@@ -50,20 +49,9 @@ class Dropdown extends Element{
 	 * @param bool $locked
 	 */
 	public function __construct(string $text, array $options, int $default = 0, ?Closure $on_submit = null, bool $locked = false){
-		parent::__construct($text, $locked, $default);
+		parent::__construct($text, $locked, $default, $on_submit);
 		$this->options = $options;
 		Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class), new ParameterType("element", static::class)), $on_submit);
-		$this->on_submit = $on_submit;
-	}
-
-	/**
-	 * Function onSubmit
-	 * @param Player $player
-	 * @param Dropdown $element
-	 * @return void
-	 */
-	public function onSubmit(Player $player, self $element): void{
-		if ($this->on_submit !== null) ($this->on_submit)($player, $element);
 	}
 
 	/**

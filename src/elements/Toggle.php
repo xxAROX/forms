@@ -53,16 +53,6 @@ class Toggle extends Element{
 	}
 
 	/**
-	 * Function onSubmit
-	 * @param Player $player
-	 * @param Toggle $element
-	 * @return void
-	 */
-	public function onSubmit(Player $player, self $element): void{
-		if ($this->on_submit !== null) ($this->on_submit)($player, $element);
-	}
-
-	/**
 	 * Function getValue
 	 * @return bool
 	 */

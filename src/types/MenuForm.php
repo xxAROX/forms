@@ -98,7 +98,7 @@ class MenuForm extends Form{
 			if (!isset($this->buttons[$data])) throw new FormValidationException("Button with index $data does not exist");
 			$button = $this->buttons[$data];
 			$button->setValue($data);
-			$button->onClick($player);
+			$button->onSubmit($player);
 		}
 		else {
 			throw new FormValidationException("Expected int or null, got " . gettype($data));

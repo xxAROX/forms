@@ -42,6 +42,6 @@ class ConfirmForm extends ModalForm{
 	 */
 	#[Pure]
 	public function __construct(string $title, string $text, Button $yes, Button $no) {
-		parent::__construct($title, $text, fn (Player $player, bool $bool) => ($bool ? $yes : $no)->onClick($player), $yes->getText(), $no->getText());
+		parent::__construct($title, $text, fn (Player $player, bool $bool) => ($bool ? $yes : $no)->onSubmit($player), $yes->getText(), $no->getText());
 	}
 }

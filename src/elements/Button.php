@@ -35,29 +35,18 @@ use pocketmine\player\Player;
 class Button extends Element{
 	protected ?Image $image;
 	protected string $type;
-	protected ?Closure $onClick = null;
 
 	/**
 	 * FunctionalButton constructor.
 	 * @param string $text
-	 * @param null|Closure $onClick
+	 * @param null|Closure $on_submit
 	 * @param null|Image $image
 	 * @param bool $locked
 	 */
 	#[Pure]
-	public function __construct(string $text, ?Closure $onClick = null, ?Image $image = null, bool $locked = false){
-		parent::__construct($text, $locked);
-		$this->onClick = $onClick;
+	public function __construct(string $text, ?Closure $on_submit = null, ?Image $image = null, bool $locked = false){
+		parent::__construct($text, $locked, null, $on_submit);
 		$this->image = $image;
-	}
-
-	/**
-	 * Function onClick
-	 * @param Player $player
-	 * @return void
-	 */
-	public function onClick(Player $player): void{
-		if (!is_null($this->onClick)) ($this->onClick)($player);
 	}
 
 	/**

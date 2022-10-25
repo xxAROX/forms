@@ -71,10 +71,6 @@ class Slider extends Element{
 		$this->on_submit = $on_submit;
 	}
 
-	public function onSubmit(Player $player, self $element): void{
-		if ($this->on_submit !== null) ($this->on_submit)($player, $element);
-	}
-
 	/**
 	 * Function getValue
 	 * @return float|int

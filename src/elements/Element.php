@@ -18,8 +18,10 @@
 
 declare(strict_types=1);
 namespace xxAROX\forms\elements;
+use Closure;
 use JsonSerializable;
 use pocketmine\form\FormValidationException;
+use pocketmine\player\Player;
 
 
 /**
@@ -43,6 +45,7 @@ abstract class Element implements JsonSerializable{
 	protected mixed $value;
 	protected null|string|int|float|bool $default;
 	protected bool $locked = false;
+	protected ?Closure $on_submit = null;
 
 	/**
 	 * Element constructor.
@@ -50,10 +53,15 @@ abstract class Element implements JsonSerializable{
 	 * @param null|bool $locked
 	 * @param null|string|int|float|bool $default
 	 */
-	public function __construct(string $text, ?bool $locked = false, null|string|int|float|bool $default = null){
+	public function __construct(string $text, ?bool $locked = false, null|string|int|float|bool $default = null, null|Closure $on_submit = null){
 		$this->text = $text;
 		$this->locked = $locked ?? false;
 		$this->default = $default ?? null;
+		$this->on_submit = $on_submit;
+	}
+
+	public function onSubmit(Player $player): void{
+		if (!is_null($this->on_submit)) ($this->on_submit)($player, $this);
 	}
 
 	/**

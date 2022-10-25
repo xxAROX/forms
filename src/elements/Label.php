@@ -61,8 +61,6 @@ class Label extends Element{
 	 * @return void
 	 */
 	public function validate(mixed $value): void{
-		if ($value !== null) {
-			throw new FormValidationException("Expected null, got " . gettype($value));
-		}
+		if ($value !== null) throw new FormValidationException("Expected null, got " . gettype($value));
 	}
 }
