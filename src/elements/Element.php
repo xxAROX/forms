@@ -65,6 +65,15 @@ abstract class Element implements JsonSerializable{
 	}
 
 	/**
+	 * Function setOnSubmit
+	 * @param null|Closure $on_submit
+	 * @return void
+	 */
+	public function setOnSubmit(?Closure $on_submit): void{
+		$this->on_submit = $on_submit;
+	}
+
+	/**
 	 * Function getValue
 	 * @return mixed
 	 */
