@@ -62,12 +62,14 @@ abstract class Element implements JsonSerializable{
 		$this->text = $text;
 		$this->locked = $locked ?? false;
 		$this->default = $default ?? null;
-		if (!is_null($on_submit)) Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class)), $on_submit);
+		if (!is_null($on_submit)) Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class), new ParameterType("element", static::class, ParameterType::CONTRAVARIANT | ParameterType::OPTIONAL)), $on_submit);
 		$this->on_submit = $on_submit;
 	}
 
 	public function onSubmit(Player $player): void{
-		if (!is_null($this->on_submit)) ($this->on_submit)($player, $this);
+		if (!is_null($this->on_submit)) {
+			($this->on_submit)($player, $this);
+		}
 	}
 
 	/**
