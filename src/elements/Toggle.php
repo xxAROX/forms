@@ -46,10 +46,7 @@ class Toggle extends Element{
 	 * @param bool $locked
 	 */
 	public function __construct(string $text, bool $default = false, ?Closure $on_submit = null, bool $locked = false){
-		parent::__construct($text, $locked, $default);
-		$this->default = $default;
-		Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class), new ParameterType("element", self::class)), $on_submit);
-		$this->on_submit = $on_submit;
+		parent::__construct($text, $locked, $default, $on_submit);
 	}
 
 	/**

@@ -19,9 +19,13 @@
 declare(strict_types=1);
 namespace xxAROX\forms\elements;
 use Closure;
+use DaveRandom\CallbackValidator\CallbackType;
+use DaveRandom\CallbackValidator\ParameterType;
+use DaveRandom\CallbackValidator\ReturnType;
 use JsonSerializable;
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
+use pocketmine\utils\Utils;
 
 
 /**
@@ -52,11 +56,13 @@ abstract class Element implements JsonSerializable{
 	 * @param string $text
 	 * @param null|bool $locked
 	 * @param null|string|int|float|bool $default
+	 * @param null|Closure $on_submit
 	 */
 	public function __construct(string $text, ?bool $locked = false, null|string|int|float|bool $default = null, null|Closure $on_submit = null){
 		$this->text = $text;
 		$this->locked = $locked ?? false;
 		$this->default = $default ?? null;
+		if (!is_null($on_submit)) Utils::validateCallableSignature(new CallbackType(new ReturnType(), new ParameterType("player", Player::class)), $on_submit);
 		$this->on_submit = $on_submit;
 	}
 

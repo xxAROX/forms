@@ -34,7 +34,6 @@ class Label extends Element{
 	 * Label constructor.
 	 * @param string $text
 	 */
-	#[Pure]
 	public function __construct(string $text){
 		parent::__construct($text);
 	}

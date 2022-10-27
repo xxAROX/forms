@@ -49,14 +49,8 @@ class Input extends Element{
 	 * @param bool $locked
 	 */
 	public function __construct(string $text, string $placeholder = "", string $default = "", ?Closure $on_submit = null, bool $locked = false){
-		parent::__construct($text, $locked, $default);
+		parent::__construct($text, $locked, $default, $on_submit);
 		$this->placeholder = $placeholder;
-		Utils::validateCallableSignature(new CallbackType(
-			new ReturnType(),
-			new ParameterType("player", Player::class),
-			new ParameterType("element", self::class)
-		), $on_submit);
-		$this->on_submit = $on_submit;
 	}
 
 	/**
