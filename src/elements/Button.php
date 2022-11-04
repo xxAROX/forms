@@ -21,7 +21,10 @@ namespace xxAROX\forms\elements;
 use Closure;
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
+use pocketmine\form\Form;
 use pocketmine\player\Player;
+use pocketmine\utils\CloningRegistryTrait;
+use pocketmine\utils\RegistryTrait;
 
 
 /**
@@ -33,6 +36,14 @@ use pocketmine\player\Player;
  * @project forms
  */
 class Button extends Element{
+	static function type_close(string $text = "§cClose"): self{
+		return new self($text, null, Image::path("textures/ui/cancel"), false);
+	}
+	static function type_back(Form $backForm, string $text = "§cBack"): self{
+		return new self($text, fn (Player $player) => $player->sendForm($backForm), Image::path("textures/ui/cancel"), false);
+	}
+
+
 	protected ?Image $image;
 	protected string $type;
 
@@ -43,8 +54,7 @@ class Button extends Element{
 	 * @param null|Image $image
 	 * @param bool $locked
 	 */
-	#[Pure]
-	public function __construct(string $text, ?Closure $on_submit = null, ?Image $image = null, bool $locked = false){
+	public function __construct(string $text = "", ?Closure $on_submit = null, ?Image $image = null, bool $locked = false){
 		parent::__construct($text, $locked, null, $on_submit);
 		$this->image = $image;
 	}

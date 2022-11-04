@@ -58,7 +58,7 @@ abstract class Element implements JsonSerializable{
 	 * @param null|string|int|float|bool $default
 	 * @param null|Closure $on_submit
 	 */
-	public function __construct(string $text, ?bool $locked = false, null|string|int|float|bool $default = null, null|Closure $on_submit = null){
+	public function __construct(string $text = "", ?bool $locked = false, null|string|int|float|bool $default = null, null|Closure $on_submit = null){
 		$this->text = $text;
 		$this->locked = $locked ?? false;
 		$this->default = $default ?? null;

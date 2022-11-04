@@ -53,7 +53,7 @@ class Slider extends Element{
 	 * @param null|Closure $on_submit
 	 * @param bool $locked
 	 */
-	public function __construct(string $text, float $min, float $max, float $step = 1.0, ?float $default = null, ?Closure $on_submit = null, bool $locked = false){
+	public function __construct(string $text = "", float $min = 0, float $max = PHP_INT_MAX, float $step = 1.0, ?float $default = null, ?Closure $on_submit = null, bool $locked = false){
 		parent::__construct($text, $default, $locked, $on_submit);
 		if ($this->min > $this->max) throw new InvalidArgumentException("Slider min value should be less than max value");
 		$this->min = $min;

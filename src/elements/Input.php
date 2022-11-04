@@ -48,7 +48,7 @@ class Input extends Element{
 	 * @param null|Closure $on_submit
 	 * @param bool $locked
 	 */
-	public function __construct(string $text, string $placeholder = "", string $default = "", ?Closure $on_submit = null, bool $locked = false){
+	public function __construct(string $text = "", string $placeholder = "", string $default = "", ?Closure $on_submit = null, bool $locked = false){
 		parent::__construct($text, $locked, $default, $on_submit);
 		$this->placeholder = $placeholder;
 	}

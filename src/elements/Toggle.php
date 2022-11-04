@@ -45,7 +45,7 @@ class Toggle extends Element{
 	 * @param null|Closure $on_submit
 	 * @param bool $locked
 	 */
-	public function __construct(string $text, bool $default = false, ?Closure $on_submit = null, bool $locked = false){
+	public function __construct(string $text = "", bool $default = false, ?Closure $on_submit = null, bool $locked = false){
 		parent::__construct($text, $locked, $default, $on_submit);
 	}
 
