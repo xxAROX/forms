@@ -63,11 +63,10 @@ class Image implements JsonSerializable{
 	 * Image constructor.
 	 * @param string $data
 	 * @param string $type
-	 * @deprecated
+	 * @deprecated will be private in next updated
 	 * @see Image::url($data)
 	 * @see Image::path($data)
 	 */
-	#[Deprecated]
 	public function __construct(string $data, string $type = self::TYPE_URL){
 		$this->type = $type;
 		$this->data = $data;
