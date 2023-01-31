@@ -2,7 +2,7 @@
     "name": "xxarox/forms",
     "autoload": {
         "psr-4": {
-            "xxAROX\\forms\\": "src/"
+            "\\": "src/"
         }
     },
     "authors": [
