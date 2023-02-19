@@ -51,7 +51,6 @@ class CustomForm extends Form{
 	public function __construct(string $title, array $elements, ?Closure $onClose = null, ?Closure $onSubmit = null){
 		parent::__construct($title);
 		$this->elements = $elements;
-		$this->onSubmit = $onSubmit;
 		$this->onClose = $onClose;
 		$this->onSubmit = $onSubmit;
 	}

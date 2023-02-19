@@ -55,13 +55,12 @@ class Slider extends Element{
 	 */
 	public function __construct(string $text = "", float $min = 0, float $max = PHP_INT_MAX, float $step = 1.0, ?float $default = null, ?Closure $on_submit = null, bool $locked = false){
 		parent::__construct($text, $default, $locked, $on_submit);
-		if ($this->min > $this->max) throw new InvalidArgumentException("Slider min value should be less than max value");
 		$this->min = $min;
 		$this->max = $max;
-		if ($default !== null) {
-			if ($default > $this->max or $default < $this->min) throw new InvalidArgumentException("Default must be in range $this->min ... $this->max");
-			$this->default = $default;
-		}
+		$this->default = $default;
+
+		if ($this->min > $this->max) throw new InvalidArgumentException("Slider min value should be less than max value");
+		if ($default !== null || $default > $this->max || $default < $this->min) throw new InvalidArgumentException("Default must be in range $this->min ... $this->max");
 		else $this->default = $this->min;
 		if ($step <= 0) throw new InvalidArgumentException("Step must be greater than zero");
 		$this->step = $step;
