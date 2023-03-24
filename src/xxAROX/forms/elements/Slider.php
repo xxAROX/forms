@@ -54,7 +54,7 @@ class Slider extends Element{
 	 * @param bool $locked
 	 */
 	public function __construct(string $text = "", float $min = 0, float $max = 5, float $step = 1.0, ?float $default = null, ?Closure $on_submit = null, bool $locked = false){
-		parent::__construct($text, $default, $locked, $on_submit);
+		parent::__construct($text, $locked, $default, $on_submit);
 		$this->min = min($max, $min);
 		$this->max = max($max, $min);
 		$this->step = $step;
