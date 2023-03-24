@@ -12,6 +12,6 @@
         }
     ],
     "require-dev": {
-        "pocketmine/pocketmine-mp": "^4"
+        "pocketmine/pocketmine-mp": "^4.17"
     }
 }
