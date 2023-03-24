@@ -2,6 +2,9 @@
 
 `composer require xxarox/forms`
 
+> ![GitHub all releases](https://img.shields.io/github/downloads/xxAROX/forms/total?color=violet&label=Downloads&style=flat-square)
+
+
 ### build.php
 
 ```php
