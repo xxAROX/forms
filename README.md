@@ -1,4 +1,6 @@
 ﻿# forms
+ 
+ Archived use [this](https://github.com/J1b1x/Forms) instead
 
 `composer require xxarox/forms`
 
